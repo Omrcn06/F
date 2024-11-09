@@ -91,7 +91,7 @@
         function update(time) {
             if (time % 9 == 0) {
 
-                let randomY = Math.floor(Math.random() * 200) + 10; // Random y between 10 and 110
+                let randomY = Math.floor(Math.random() * 400) + 10; // Random y between 10 and 110
                 this.pipeU = this.pipeUp.get().setActive(true).setVisible(true).setPosition(posX + 100, randomY).setScale(2, 2)
                 this.pipeD = this.pipeDown.get().setActive(true).setVisible(true).setPosition(posX + 100, game.config.height + randomY).setScale(2, 2)
 
