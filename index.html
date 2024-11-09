@@ -108,7 +108,7 @@
 
 
             // Mevcut kontrolleri güncelleme (hem klavye hem dokunmatik ekran için)
-            if (this.cursor.isDown) {
+            if (this.cursor.isDown || this.input.activePointer.isDown) {
                 this.bird.setVelocityY(-100);
             } else {
                 this.bird.setVelocityY(200);
