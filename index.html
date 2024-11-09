@@ -57,7 +57,7 @@
         }
 
         function create() {
-            this.cursor = scene.input.activePointer;
+            this.cursor = this.input.keyboard.createCursorKeys();
             this.pipeUp = this.physics.add.group({
                 classType: PipeUpClass,
                 runChildUpdate: true,
@@ -83,11 +83,6 @@
             this.bird.anims.play('fly');
             this.physics.add.collider(this.bird, this.pipeUp, birdDie);
             this.physics.add.collider(this.bird, this.pipeDown, birdDie)
-
-            // Ekrana dokunma kontrolü ekleme
-            this.input.on('pointerdown', function () {
-                this.bird.setVelocityY(-100);
-            }, this);
         }
 
 
@@ -107,8 +102,7 @@
             }
 
 
-            // Mevcut kontrolleri güncelleme (hem klavye hem dokunmatik ekran için)
-            if (this.cursor.isDown || this.input.activePointer.isDown) {
+            if (this.cursor.up.isDown) {
                 this.bird.setVelocityY(-100);
             } else {
                 this.bird.setVelocityY(200);
@@ -117,7 +111,7 @@
 
         function birdDie(b) {
             b.active = false;
-            b.disableBody(true, true)
+            b.disableBody(true, true) 
         }
     </script>
 </body>
