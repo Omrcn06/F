@@ -58,9 +58,12 @@
 
         function create() {
             this.cursor = this.input.keyboard.createCursorKeys();
-            this.input.on('pointerdown', function() {
+            this.input.addPointer(1);
+            this.upButton = this.add.rectangle(100, game.config.height - 100, 80, 80, 0x666666, 0.8);
+            this.upButton.setInteractive();
+            this.upButton.on('pointerdown', () => {
                 this.bird.setVelocityY(-100);
-            }, this);
+            });
             this.pipeUp = this.physics.add.group({
                 classType: PipeUpClass,
                 runChildUpdate: true,
