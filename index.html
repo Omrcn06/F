@@ -57,13 +57,7 @@
         }
 
         function create() {
-            this.cursor = this.input.keyboard.createCursorKeys();
-            this.input.addPointer(1);
-            this.upButton = this.add.rectangle(100, game.config.height - 100, 80, 80, 0x666666, 0.8);
-            this.upButton.setInteractive();
-            this.upButton.on('pointerdown', () => {
-                this.bird.setVelocityY(-100);
-            });
+            this.cursor = scene.input.activePointer;
             this.pipeUp = this.physics.add.group({
                 classType: PipeUpClass,
                 runChildUpdate: true,
@@ -89,6 +83,11 @@
             this.bird.anims.play('fly');
             this.physics.add.collider(this.bird, this.pipeUp, birdDie);
             this.physics.add.collider(this.bird, this.pipeDown, birdDie)
+
+            // Ekrana dokunma kontrolü ekleme
+            this.input.on('pointerdown', function () {
+                this.bird.setVelocityY(-100);
+            }, this);
         }
 
 
@@ -108,7 +107,8 @@
             }
 
 
-            if (this.cursor.up.isDown) {
+            // Mevcut kontrolleri güncelleme (hem klavye hem dokunmatik ekran için)
+            if (this.cursor.isDown) {
                 this.bird.setVelocityY(-100);
             } else {
                 this.bird.setVelocityY(200);
