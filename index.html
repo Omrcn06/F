@@ -58,6 +58,9 @@
 
         function create() {
             this.cursor = this.input.keyboard.createCursorKeys();
+            this.input.on('pointerdown', function() {
+                this.bird.setVelocityY(-100);
+            }, this);
             this.pipeUp = this.physics.add.group({
                 classType: PipeUpClass,
                 runChildUpdate: true,
