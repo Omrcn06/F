@@ -37,21 +37,21 @@
         let PipeUpClass = new Phaser.Class({
             Extends: Phaser.GameObjects.Image,
             initialize: function PipeUpClass(scene) {
-                Phaser.GameObjects.Image.call(this, scene, 2, 0, 'pipeUp');
+                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'pipeUp');
             }
         });
 
         let PipeDownClass = new Phaser.Class({
             Extends: Phaser.GameObjects.Image,
             initialize: function PipeDownClass(scene) {
-                Phaser.GameObjects.Image.call(this, scene, 2, 0, 'pipeDown');
+                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'pipeDown');
             }
         });
 
         function preload() {
             this.load.image("pipeUp", "assets/pipeUp.png");
             this.load.image("pipeDown", "assets/pipeDown.png");
-            this.load.spritesheet('bird', 'assets/Bird.png', {
+            this.load.spritesheet('bird', 'assets/Zey.png', {
                 frameWidth: 16, frameHeight: 16
             });
         }
